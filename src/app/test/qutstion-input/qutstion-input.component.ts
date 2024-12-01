@@ -6,7 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { environment } from '../../../environments/environment';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 
+const SERVERURL = environment.apiUrl + '/ask-python';
 @Component({
   selector: 'app-qutstion-input',
   templateUrl: './qutstion-input.component.html',
@@ -20,17 +24,25 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
+    CommonModule,
   ],
 })
 export class QuestionInputComponent {
   question: string = '';
-  @Output() answerReceived = new EventEmitter<{ question: string; answer: string }>();
+  isLoading = false;
+
+  @Output() answerReceived = new EventEmitter<{
+    question: string;
+    answer: string;
+  }>();
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   submitQuestion() {
     if (this.question.trim()) {
       const currentQuestion = this.question;
+      this.isLoading = true;
       this.http
         .post<{ answer: string }>('http://localhost:3000/ask-python', {
           question: this.question,
@@ -39,13 +51,21 @@ export class QuestionInputComponent {
           (response) => {
             this.snackBar.open('Answer received!', 'Close', { duration: 2000 });
             console.log('Server response:', response);
-            this.answerReceived.emit({ question: currentQuestion, answer: response.answer });
-          
+            this.answerReceived.emit({
+              question: currentQuestion,
+              answer: response.answer,
+            });
+            this.isLoading = false;
+            // setTimeout(() => {
+            //   console.log('服务器返回:', response);
+            //   this.isLoading = false; 
+            // }, 5000); 
           },
           (error) => {
             this.snackBar.open('Error fetching answer!', 'Close', {
               duration: 2000,
             });
+            this.isLoading = false;
           }
         );
     } else {

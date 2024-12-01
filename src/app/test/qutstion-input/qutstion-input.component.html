@@ -7,8 +7,14 @@
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions style="align-self: center">
-    <button mat-raised-button color="primary" (click)="submitQuestion()">
+    <button [disabled]="isLoading"  [disabled]="!question.trim()" mat-raised-button color="primary" (click)="submitQuestion()">
       提交
     </button>
+    <mat-progress-spinner
+    *ngIf="isLoading"
+    diameter="24"
+    mode="indeterminate"
+    strokeWidth="4"
+  ></mat-progress-spinner>
   </mat-card-actions>
 </mat-card>
