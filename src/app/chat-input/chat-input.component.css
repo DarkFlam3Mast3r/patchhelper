@@ -1,0 +1,26 @@
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .chat-input-container textarea {
+    flex: 1;
+    resize: none;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .chat-input-container button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  

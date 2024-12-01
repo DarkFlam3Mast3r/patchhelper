@@ -1,0 +1,14 @@
+<div class="chat-input-container">
+    <textarea
+      [(ngModel)]="message"
+      (keyown)="onKeyDown($event)"
+      (input)="autoGrow($event)"
+      placeholder="请输入消息..."
+      #textArea
+      rows="1"
+    ></textarea>
+    <button (click)="sendMessage()" [disabled]="!message.trim()">
+      发送
+    </button>
+  </div>
+  
