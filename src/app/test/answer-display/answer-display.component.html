@@ -1,6 +1,8 @@
-<mat-card *ngIf="answer">
-  <mat-card-title>Answer</mat-card-title>
-  <mat-card-content>
+<mat-card>
+  <mat-card-title><span>提问：</span>
+    <div>{{ question }}</div></mat-card-title>
+  <mat-card-title>
+    <span>回答：</span>
     <div [innerHTML]="parsedAnswer"></div>
-  </mat-card-content>
+  </mat-card-title>
 </mat-card>

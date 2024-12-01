@@ -12,8 +12,9 @@ import { marked } from 'marked';
   styleUrl: './answer-display.component.css'
 })
 export class AnswerDisplayComponent implements OnChanges {
-  @Input() answer: string = '';  // 从父组件接收到的答案
-  parsedAnswer: string = '';     // 转换后的 HTML 格式答案
+  @Input() question: string = ''; // 接收问题
+  @Input() answer: string = ''; // 接收答案
+  parsedAnswer: string = '';
 
   async ngOnChanges() {
     if (this.answer) {

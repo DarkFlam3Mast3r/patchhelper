@@ -1,9 +1,8 @@
-<div style="text-align: center">
-  <div>
-    <app-qutstion-input
-      (answerReceived)="onAnswerReceived($event)"
-    ></app-qutstion-input>
+<div class="container">
+    <app-qutstion-input (answerReceived)="onAnswerReceived($event)"></app-qutstion-input>
+  
+    <div *ngFor="let qa of questionsAndAnswers" style="margin-bottom: 20px;">
+      <app-answer-display [question]="qa.question" [answer]="qa.answer"></app-answer-display>
+    </div>
   </div>
-
-  <app-answer-display [answer]="answer"></app-answer-display>
-</div>
+  

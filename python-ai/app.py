@@ -12,7 +12,9 @@ client = OpenAI(
     api_key="sk-GZK6522780241857854b343f3abd677899a1399f204cay4j",
     base_url="https://api.gptsapi.net/v1"
 )
-input_datapath="embedded_100_reviews.csv"
+current_directory = os.path.dirname(os.path.abspath(__file__))
+input_datapath = os.path.join(current_directory, "embedded_100_reviews.csv")
+
 df = pd.read_csv(input_datapath,index_col=0)
 df['ada_embedding'] = df['ada_embedding'].apply(ast.literal_eval)
 
@@ -107,7 +109,18 @@ def handle_ask():
     try:
         # Call ask function to get the answer
         #answer = ask(query=question)
-        answer = "The most mentioned feature in the reviews is the taste/flavor of the products."
+        # answer = "The most mentioned feature in the reviews is the taste/flavor of the products."
+        answer = '''
+        # 这是一个标题
+
+这是正文的一部分，用来测试 **加粗** 和 *斜体* 的显示。
+
+## 列表测试
+
+- 第一项
+- 第二项
+  - 子项 1
+  - 子项 2'''
         return jsonify({"answer": answer})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

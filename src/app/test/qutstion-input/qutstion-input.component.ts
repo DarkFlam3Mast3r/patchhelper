@@ -24,11 +24,13 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class QuestionInputComponent {
   question: string = '';
-  @Output() answerReceived = new EventEmitter<string>();
+  @Output() answerReceived = new EventEmitter<{ question: string; answer: string }>();
+
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   submitQuestion() {
     if (this.question.trim()) {
+      const currentQuestion = this.question;
       this.http
         .post<{ answer: string }>('http://localhost:3000/ask-python', {
           question: this.question,
@@ -37,7 +39,8 @@ export class QuestionInputComponent {
           (response) => {
             this.snackBar.open('Answer received!', 'Close', { duration: 2000 });
             console.log('Server response:', response);
-            this.answerReceived.emit(response.answer);
+            this.answerReceived.emit({ question: currentQuestion, answer: response.answer });
+          
           },
           (error) => {
             this.snackBar.open('Error fetching answer!', 'Close', {
