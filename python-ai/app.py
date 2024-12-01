@@ -106,7 +106,8 @@ def handle_ask():
 
     try:
         # Call ask function to get the answer
-        answer = ask(query=question)
+        #answer = ask(query=question)
+        answer = "The most mentioned feature in the reviews is the taste/flavor of the products."
         return jsonify({"answer": answer})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

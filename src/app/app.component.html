@@ -1,2 +1,18 @@
-<h1>hello</h1>
-<app-chat-input (messageSend)="handleMessage($event)"></app-chat-input>
+<div class="container">
+  <div class="row">
+    <!-- <div class="col-md-12">
+            <button class="btn btn-primary"
+            (click)="onClickSwitchComponent()">Switch</button>
+            <hr>
+        </div> -->
+    <div class="col-md-12">
+      <!-- @if(showRecipe){
+                <app-recipes></app-recipes>
+            }
+            @else {
+                <app-shopping-list></app-shopping-list>
+            } -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

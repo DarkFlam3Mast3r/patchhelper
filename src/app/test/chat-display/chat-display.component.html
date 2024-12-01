@@ -1,0 +1,9 @@
+<div style="text-align: center">
+  <div>
+    <app-qutstion-input
+      (answerReceived)="onAnswerReceived($event)"
+    ></app-qutstion-input>
+  </div>
+
+  <app-answer-display [answer]="answer"></app-answer-display>
+</div>

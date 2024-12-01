@@ -1,0 +1,15 @@
+mat-card {
+    margin: 20px auto; /* 居中 */
+    padding: 20px;
+    max-width: 600px; /* 最大宽度 */
+    text-align: left;
+  }
+
+mat-form-field {
+  width: 100%; /* 让输入框占满可用宽度 */
+  margin-bottom: 20px; /* 增加下方间距 */
+}
+
+button {
+  width: 100%; /* 提交按钮占满宽度 */
+}

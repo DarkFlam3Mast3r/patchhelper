@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title>Ask a Question</mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Enter your question</mat-label>
+      <input matInput [(ngModel)]="question" />
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions style="align-self: center">
+    <button mat-raised-button color="primary" (click)="submitQuestion()">
+      Submit
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,11 @@
+mat-card {
+  margin: 20px auto; /* 居中 */
+  padding: 20px;
+  max-width: 600px; /* 最大宽度 */
+  text-align: left;
+}
+
+div[innerHTML] {
+  font-size: 22px;
+  line-height: 1.5; /* 行高让文字更易读 */
+}
